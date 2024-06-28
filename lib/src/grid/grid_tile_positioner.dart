@@ -32,8 +32,9 @@ class GridTilePositioner {
   }
 
   Offset _tileOffset(TileIdentity tile) {
+    final Point<double> tileDoublePoint=tile.toDoublePoint();
     final tilePosition =
-        ((tile.toDoublePoint().scaleBy(tileSize) - state.origin) *
+      ((Point<double>(tileDoublePoint.x * tileSize.x,tileDoublePoint.y * tileSize.y) - state.origin) *
                 state.zoomScale) +
             state.translate;
     return Offset(tilePosition.x.toDouble(), tilePosition.y.toDouble());
